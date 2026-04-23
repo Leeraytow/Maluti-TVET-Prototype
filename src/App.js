@@ -9,6 +9,7 @@ import ContactPage from './MainPages/ContactPage';
 import CoursesPage from './MainPages/CoursesPage';
 import VacanciesPage from './MainPages/Vacancies';
 import LoginPage from './MainPages/LoginPage';
+import StudentDashboard from './MainPages/StudentDashboard';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/studentdashboard" element={<StudentDashboard/>}/>
         </Routes>
         <Footer />
       </div>

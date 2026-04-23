@@ -1,8 +1,10 @@
 // pages/HomePage.js
 import React, { useState, useEffect } from 'react';
-import { GraduationCap, BookOpen, Users, Award, FileText, Handshake, Briefcase, Shield, Download, Heart, AlertTriangle, Phone, Building, Calendar, UserCheck, TrendingUp, Mail, MessageCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { GraduationCap, BookOpen, Users, Award, FileText, Handshake, Briefcase, Shield, Download, Heart, AlertTriangle, Phone, Building, Calendar, UserCheck, TrendingUp, Mail, MessageCircle, Star } from 'lucide-react';
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -10,43 +12,59 @@ const HomePage = () => {
       title: 'Welcome to Maluti TVET College',
       subtitle: 'Empowering Futures, Building Careers',
       button1: 'Student Portal',
+      button1Link: '/login',
       button2: 'Find a Campus',
+      button2Link: '/campuses',
       image: '/background1.png'
     },
     {
       title: '2025 Applications Now Open',
       subtitle: 'Apply online for the 2025 academic year. Limited spaces available!',
       button1: 'Apply Now',
+      button1Link: '/login',
       button2: 'View Programs',
+      button2Link: '/courses',
       image: '/application.jfif'
     },
     {
       title: 'NSFAS Funding Available',
       subtitle: 'Financial assistance for qualifying students. Apply for NSFAS today!',
       button1: 'Apply for NSFAS',
+      button1Link: 'https://my.nsfas.org.za/',
       button2: 'Learn More',
-      image: '/nsfas.jfif'
+      button2Link: '/nsfas',
+      image: '/nsfas.jfif',
+      isExternalPrimary: true
     },
     {
       title: 'Stay Safe with Namola App',
       subtitle: 'Your safety is our priority. Download the Namola safety app for 24/7 protection.',
       button1: 'Download Namola',
+      button1Link: 'https://www.namola.com/',
       button2: 'Learn More',
+      button2Link: 'https://www.namola.com/',
       image: '/namola1.jpg',
-      isDownload: true
+      isDownload: true,
+      isExternalPrimary: true,
+      isExternalSecondary: true
     },
     {
       title: 'COVID-19 Health & Safety',
       subtitle: 'Stay informed about our health protocols and vaccination campaigns.',
       button1: 'View Guidelines',
+      button1Link: 'https://www.gov.za/covid-19/resources/regulations-and-guidelines-coronavirus-covid-19',
       button2: 'Get Vaccinated',
-      image: '/covid19.jfif'
+      button2Link: '/vaccination',
+      image: '/covid19.jfif',
+      isExternalPrimary: true
     },
     {
       title: 'Report Fraud Anonymously',
       subtitle: 'Help us maintain integrity. Report any fraudulent activities through our hotline.',
       button1: 'Report Now',
+      button1Link: '/report-fraud',
       button2: 'View Hotline',
+      button2Link: '/fraud-hotline',
       image: '/fraud.jpg',
       fraudInfo: {
         provider: 'Whistle Blower',
@@ -57,10 +75,18 @@ const HomePage = () => {
     }
   ];
 
+  const handleButtonClick = (link, isExternal = false) => {
+    if (isExternal || link?.startsWith('http')) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(link);
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 2000); 
+    }, 4000);
     return () => clearInterval(interval);
   }, [slides.length]);
 
@@ -114,7 +140,7 @@ const HomePage = () => {
       icon: <GraduationCap size={24} />, 
       description: 'Apply for NSFAS funding and check your application status online.',
       image: 'https://onlinestudent.co.za/wp-content/uploads/2025/07/NSFAS.webp',
-      link: '#'
+      link: 'https://my.nsfas.org.za/'
     },
     { 
       title: 'Corporate Affairs', 
@@ -128,7 +154,7 @@ const HomePage = () => {
       icon: <Calendar size={24} />, 
       description: 'Register for courses and complete your enrolment process.',
       image: 'https://st3.depositphotos.com/3591429/12696/i/450/depositphotos_126967612-stock-photo-woman-working-with-laptop-in.jpg',
-      link: '#'
+      link: '/login'
     }
   ];
 
@@ -146,6 +172,44 @@ const HomePage = () => {
       readMoreLink: '/courses'
     }
   ];
+
+  const galleryImages = [
+    {
+      url: 'https://fundiconnect.co.za/wp-content/uploads/elementor/thumbs/maluti-Tvet-Splash-2-1-q9wc2m1xpcbn3302t6iyuc26hrmnn28u7h1iji21fc.png',
+      title: 'Main Campus',
+      alt: 'Main Campus Building'
+    },
+    {
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUocGczblf0Q-BmqVTiFCkJ8qPKIA5avwqzA&s',
+      title: 'Students Learning',
+      alt: 'Students in classroom'
+    },
+    {
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUme_o6Ml2hUZY4J9Ut_5ZiTxuL6GgQ45WCA&s',
+      title: 'Graduation Ceremony',
+      alt: 'Graduation celebration'
+    },
+    {
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGHxENxPc0M0Xk1Wn7zfpNWDXbX-dJI1ztbA&s',
+      title: 'Faculty Member',
+      alt: 'Professor teaching'
+    },
+    {
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5ioEM6yNeLR2RYFBAa8dVZ2i9lPT4WJQ-Q&s',
+      title: 'Engineering Workshop',
+      alt: 'Engineering students at work'
+    }
+  ];
+
+  const handleQuickAccessClick = (link) => {
+    if (link && link !== '#') {
+      if (link.startsWith('http')) {
+        window.open(link, '_blank', 'noopener,noreferrer');
+      } else {
+        navigate(link);
+      }
+    }
+  };
 
   return (
     <main>
@@ -166,11 +230,19 @@ const HomePage = () => {
             )}
             
             <div className="hero-buttons">
-              <button className="btn btn-primary">
+              <button 
+                className="btn btn-primary"
+                onClick={() => handleButtonClick(slides[currentSlide].button1Link, slides[currentSlide].isExternalPrimary || slides[currentSlide].isExternal)}
+              >
                 {slides[currentSlide].isDownload && <Download size={18} style={{ marginRight: '8px' }} />}
                 {slides[currentSlide].button1}
               </button>
-              <button className="btn btn-secondary">{slides[currentSlide].button2}</button>
+              <button 
+                className="btn btn-secondary"
+                onClick={() => handleButtonClick(slides[currentSlide].button2Link, slides[currentSlide].isExternalSecondary || slides[currentSlide].isExternal)}
+              >
+                {slides[currentSlide].button2}
+              </button>
             </div>
           </div>
           <div className="slide-dots">
@@ -185,31 +257,10 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* DHET Logo Section */}
-      <section className="dhet-section">
-        <div className="container">
-          <div className="dhet-wrapper">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/en/4/4c/DHEAT_logo.svg" 
-              alt="Department of Higher Education and Training" 
-              className="dhet-logo" 
-              onError={(e) => { 
-                e.target.onerror = null;
-                e.target.src = 'https://placehold.co/100x100/141632/white?text=DHET';
-              }} 
-            />
-            <div className="dhet-text">
-              <h3>Accredited by the Department of Higher Education and Training</h3>
-              <p>All our programmes are DHET accredited and registered with quality councils</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Maluti Section */}
+      {/* Why Choose Maluti Section - DHET section removed */}
       <section className="why-choose">
         <div className="container">
-          <h2 className="section-title">Why Choose Maluti TVET College?</h2>
+          <h2 className="section-title">Why Choose <span style={{ color: '#D4AF37' }}>Maluti TVET</span> College?</h2>
           <div className="reasons-grid">
             {reasons.map((reason, index) => (
               <div key={index} className="reason-card">
@@ -229,17 +280,17 @@ const HomePage = () => {
       <div className="curly-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M0,0 C150,50 250,80 400,60 C550,40 650,20 800,40 C950,60 1050,80 1200,30 L1200,120 L0,120 Z" fill="#f8f9fa"></path>
-          <path d="M0,0 C150,60 250,90 400,70 C550,50 650,30 800,50 C950,70 1050,90 1200,40 L1200,120 L0,120 Z" fill="#141632" opacity="0.05"></path>
+          <path d="M0,0 C150,60 250,90 400,70 C550,50 650,30 800,50 C950,70 1050,90 1200,40 L1200,120 L0,120 Z" fill="#D4AF37" opacity="0.1"></path>
         </svg>
       </div>
 
-      {/* Quick Access Section - With Images */}
+      {/* Quick Access Section */}
       <section className="quick-access">
         <div className="container">
           <h2 className="section-title">Quick Access</h2>
           <div className="quick-grid">
             {quickAccessItems.map((item, index) => (
-              <div key={index} className="quick-card" onClick={() => window.location.href = item.link}>
+              <div key={index} className="quick-card" onClick={() => handleQuickAccessClick(item.link)}>
                 <div className="quick-image">
                   <img src={item.image} alt={item.title} />
                   <div className="quick-image-overlay"></div>
@@ -262,7 +313,7 @@ const HomePage = () => {
       <div className="curly-divider reverse">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M0,30 C150,80 250,50 400,70 C550,90 650,110 800,90 C950,70 1050,50 1200,80 L1200,0 L0,0 Z" fill="white"></path>
-          <path d="M0,20 C150,70 250,40 400,60 C550,80 650,100 800,80 C950,60 1050,40 1200,70 L1200,0 L0,0 Z" fill="#141632" opacity="0.05"></path>
+          <path d="M0,20 C150,70 250,40 400,60 C550,80 650,100 800,80 C950,60 1050,40 1200,70 L1200,0 L0,0 Z" fill="#D4AF37" opacity="0.1"></path>
         </svg>
       </div>
 
@@ -286,13 +337,19 @@ const HomePage = () => {
       <div className="curly-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M0,0 C150,50 250,80 400,60 C550,40 650,20 800,40 C950,60 1050,80 1200,30 L1200,120 L0,120 Z" fill="#f8f9fa"></path>
-          <path d="M0,0 C150,60 250,90 400,70 C550,50 650,30 800,50 C950,70 1050,90 1200,40 L1200,120 L0,120 Z" fill="#141632" opacity="0.05"></path>
+          <path d="M0,0 C150,60 250,90 400,70 C550,50 650,30 800,50 C950,70 1050,90 1200,40 L1200,120 L0,120 Z" fill="#D4AF37" opacity="0.1"></path>
         </svg>
       </div>
 
-      {/* Message from Principal Section */}
+      {/* Message from Principal Section with Heading */}
       <section className="principal-message">
         <div className="container">
+          <div className="principal-heading-wrapper">
+            <h2 className="principal-section-title">
+              Message from <span style={{ color: '#D4AF37' }}>the Principal</span>
+            </h2>
+            <div className="principal-heading-line"></div>
+          </div>
           <div className="principal-wrapper">
             <div className="principal-image">
               <img src="/principal.jfif" alt="Principal of Maluti TVET College" onError={(e) => { e.target.src = 'https://placehold.co/400x500/141632/white?text=Principal'; }} />
@@ -309,7 +366,33 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Image Gallery Section - 5 Pictures Next to Each Other */}
+      <section className="gallery-section">
+        <div className="container">
+          <h2 className="section-title">Our <span style={{ color: '#D4AF37' }}>Campus Life</span></h2>
+          <p className="gallery-subtitle">Experience the vibrant atmosphere at Maluti TVET College</p>
+          <div className="gallery-grid">
+            {galleryImages.map((image, index) => (
+              <div key={index} className="gallery-item">
+                <img src={image.url} alt={image.alt} loading="lazy" />
+                <div className="gallery-overlay">
+                  <div className="gallery-content">
+                    <h4>{image.title}</h4>
+                    <Star size={24} color="#D4AF37" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <style>{`
+        :root {
+          --gold: #D4AF37;
+          --gold-dark: #B8960C;
+        }
+
         .hero {
           position: relative;
           height: 400px;
@@ -366,10 +449,6 @@ const HomePage = () => {
           font-size: 0.85rem;
         }
 
-        .fraud-info p {
-          margin: 3px 0;
-        }
-
         .hero-buttons {
           display: flex;
           gap: 1rem;
@@ -396,6 +475,7 @@ const HomePage = () => {
 
         .btn-primary:hover {
           transform: translateY(-3px);
+          background-color: var(--gold);
         }
 
         .btn-secondary {
@@ -406,6 +486,8 @@ const HomePage = () => {
 
         .btn-secondary:hover {
           transform: translateY(-3px);
+          border-color: var(--gold);
+          color: var(--gold);
         }
 
         .slide-dots {
@@ -430,40 +512,7 @@ const HomePage = () => {
         }
 
         .dot.active {
-          background-color: #C2B9F5;
-        }
-
-        /* DHET Section */
-        .dhet-section {
-          padding: 30px 20px;
-          background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-          border-bottom: 1px solid #eee;
-        }
-
-        .dhet-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 2rem;
-          flex-wrap: wrap;
-          text-align: center;
-        }
-
-        .dhet-logo {
-          height: 70px;
-          width: auto;
-          object-fit: contain;
-        }
-
-        .dhet-text h3 {
-          font-size: 1rem;
-          color: #141632;
-          margin-bottom: 0.25rem;
-        }
-
-        .dhet-text p {
-          font-size: 0.8rem;
-          color: #666;
+          background-color: var(--gold);
         }
 
         .why-choose {
@@ -482,8 +531,13 @@ const HomePage = () => {
         }
 
         .principal-message {
-          padding: 60px 20px;
+          padding: 60px 20px 40px 20px;
           background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .gallery-section {
+          padding: 60px 20px;
+          background: white;
         }
 
         .container {
@@ -495,8 +549,15 @@ const HomePage = () => {
           text-align: center;
           font-size: 2.2rem;
           color: #141632;
-          margin-bottom: 2.5rem;
+          margin-bottom: 1rem;
           font-weight: bold;
+        }
+
+        .gallery-subtitle {
+          text-align: center;
+          color: #666;
+          margin-bottom: 2.5rem;
+          font-size: 0.95rem;
         }
 
         .reasons-grid {
@@ -519,6 +580,7 @@ const HomePage = () => {
         .reason-card:hover {
           transform: translateY(-5px);
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+          border-bottom: 2px solid var(--gold);
         }
 
         .reason-left-border {
@@ -540,6 +602,11 @@ const HomePage = () => {
           border-radius: 50%;
           margin-bottom: 1.2rem;
           color: #141632;
+          transition: background-color 0.3s;
+        }
+
+        .reason-card:hover .icon-wrapper {
+          background-color: var(--gold);
         }
 
         .reason-title {
@@ -555,7 +622,6 @@ const HomePage = () => {
           line-height: 1.6;
         }
 
-        /* Curly Divider */
         .curly-divider {
           width: 100%;
           overflow: hidden;
@@ -572,7 +638,6 @@ const HomePage = () => {
           transform: rotate(180deg);
         }
 
-        /* Quick Access with Images */
         .quick-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -624,6 +689,10 @@ const HomePage = () => {
           background-color: #141632;
         }
 
+        .quick-card:hover .quick-blue-bar {
+          background-color: var(--gold);
+        }
+
         .quick-content {
           padding: 1.3rem;
           display: flex;
@@ -668,6 +737,7 @@ const HomePage = () => {
         .info-card:hover {
           transform: translateY(-5px);
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+          border-bottom: 2px solid var(--gold);
         }
 
         .info-icon {
@@ -696,7 +766,28 @@ const HomePage = () => {
         }
 
         .read-more-btn:hover {
-          color: #C2B9F5;
+          color: var(--gold);
+        }
+
+        /* Principal Section with Heading */
+        .principal-heading-wrapper {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .principal-section-title {
+          font-size: 2.2rem;
+          color: #141632;
+          margin-bottom: 0.5rem;
+          font-weight: bold;
+        }
+
+        .principal-heading-line {
+          width: 80px;
+          height: 4px;
+          background: var(--gold);
+          margin: 0 auto;
+          border-radius: 2px;
         }
 
         .principal-wrapper {
@@ -740,7 +831,60 @@ const HomePage = () => {
         .signature {
           font-family: 'Brush Script MT', cursive;
           font-size: 1.6rem;
-          color: #141632;
+          color: var(--gold);
+        }
+
+        /* Gallery Section - 5 Images Next to Each Other */
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1rem;
+        }
+
+        .gallery-item {
+          position: relative;
+          overflow: hidden;
+          border-radius: 12px;
+          cursor: pointer;
+          aspect-ratio: 1 / 1;
+        }
+
+        .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+          transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+          padding: 1rem;
+          transform: translateY(100%);
+          transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+          transform: translateY(0);
+        }
+
+        .gallery-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: white;
+        }
+
+        .gallery-content h4 {
+          font-size: 0.85rem;
+          margin: 0;
         }
 
         @media (max-width: 1024px) {
@@ -751,6 +895,9 @@ const HomePage = () => {
           .quick-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
+          }
+          .gallery-grid {
+            grid-template-columns: repeat(3, 1fr);
           }
         }
 
@@ -793,11 +940,17 @@ const HomePage = () => {
             padding: 8px 20px;
             font-size: 0.85rem;
           }
-          .dhet-logo {
-            height: 50px;
-          }
           .curly-divider svg {
             height: 40px;
+          }
+          .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .gallery-grid {
+            grid-template-columns: 1fr;
           }
         }
 
@@ -805,7 +958,7 @@ const HomePage = () => {
           .hero {
             height: 450px;
           }
-          .why-choose, .quick-access, .general-info, .principal-message {
+          .why-choose, .quick-access, .general-info, .principal-message, .gallery-section {
             padding: 40px 20px;
           }
           .section-title {

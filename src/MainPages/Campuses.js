@@ -1,6 +1,6 @@
 // MainPages/Campuses.js
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, BookOpen, GraduationCap, Briefcase, ChevronRight, ExternalLink, Globe } from 'lucide-react';
+import { MapPin, Phone, Mail, BookOpen, GraduationCap, Briefcase, ChevronRight, ExternalLink, Globe, Star } from 'lucide-react';
 
 const CampusesPage = () => {
   const [selectedCampus, setSelectedCampus] = useState(null);
@@ -133,12 +133,12 @@ const CampusesPage = () => {
 
   return (
     <main className="campuses-page">
-      {/* Hero Section with Background Image */}
+      {/* Hero Section - Same height as Courses page */}
       <section className="campuses-hero">
         <div className="hero-background"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1>Our Campuses</h1>
+          <h1>Our <span style={{ color: '#D4AF37' }}>Campuses</span></h1>
           <p>Maluti TVET College has eight (8) campuses located across the North Eastern Free State, offering quality technical and vocational education.</p>
           <div className="hero-stats">
             <div className="stat">
@@ -160,7 +160,7 @@ const CampusesPage = () => {
       {/* Campuses Grid - 4 over 4 */}
       <section className="campuses-grid-section">
         <div className="container">
-          <h2 className="section-title">Explore Our Campuses</h2>
+          <h2 className="section-title">Explore <span style={{ color: '#D4AF37' }}>Our Campuses</span></h2>
           <p className="section-subtitle">From the majestic Maluti Mountains to the bustling towns of Bethlehem and Harrismith, our campuses are strategically located to serve students across the region.</p>
           
           <div className="campuses-grid">
@@ -191,7 +191,7 @@ const CampusesPage = () => {
       {/* Featured Occupational Programmes with Images */}
       <section className="featured-programmes">
         <div className="container">
-          <h2 className="section-title">Featured Occupational Programmes</h2>
+          <h2 className="section-title">Featured <span style={{ color: '#D4AF37' }}>Occupational</span> Programmes</h2>
           <p className="section-subtitle">Newly accredited programmes for 2025 across our campuses</p>
           <div className="programmes-grid">
             {featuredProgrammes.map((programme, index) => (
@@ -221,7 +221,7 @@ const CampusesPage = () => {
             <div className="modal-header">
               <h2>{selectedCampus.name}</h2>
               <div className="modal-location">
-                <MapPin size={18} />
+                <MapPin size={18} color="#D4AF37" />
                 <span>{selectedCampus.location}</span>
               </div>
             </div>
@@ -253,20 +253,25 @@ const CampusesPage = () => {
       )}
 
       <style>{`
+        :root {
+          --gold: #D4AF37;
+          --gold-dark: #B8960C;
+        }
+
         .campuses-page {
           font-family: 'Arial', sans-serif;
         }
 
-        /* Hero Section with Background Image */
+        /* Hero Section - Same height as Courses page */
         .campuses-hero {
           position: relative;
-          min-height: 320px;
+          min-height: 280px;
           display: flex;
           align-items: center;
           justify-content: center;
           text-align: center;
           color: white;
-          padding: 50px 20px;
+          padding: 40px 20px;
           overflow: hidden;
         }
 
@@ -280,7 +285,7 @@ const CampusesPage = () => {
           background-size: cover;
           background-position: center;
           filter: blur(2px);
-          transform: scale(1.05);
+          transform: scale(1.02);
         }
 
         .hero-overlay {
@@ -289,7 +294,7 @@ const CampusesPage = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(20, 22, 50, 0.8);
+          background: rgba(20, 22, 50, 0.85);
         }
 
         .hero-content {
@@ -300,21 +305,21 @@ const CampusesPage = () => {
         }
 
         .hero-content h1 {
-          font-size: 2.8rem;
-          margin-bottom: 1rem;
+          font-size: 2.5rem;
+          margin-bottom: 0.75rem;
           font-weight: bold;
         }
 
         .hero-content p {
-          font-size: 1.1rem;
+          font-size: 1rem;
           opacity: 0.9;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
         }
 
         .hero-stats {
           display: flex;
           justify-content: center;
-          gap: 3rem;
+          gap: 2rem;
           flex-wrap: wrap;
         }
 
@@ -324,13 +329,13 @@ const CampusesPage = () => {
 
         .stat-number {
           display: block;
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: bold;
-          color: #C2B9F5;
+          color: var(--gold);
         }
 
         .stat-label {
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           opacity: 0.8;
         }
 
@@ -344,7 +349,7 @@ const CampusesPage = () => {
         /* Section Titles */
         .section-title {
           text-align: center;
-          font-size: 2.2rem;
+          font-size: 1.8rem;
           color: #141632;
           margin-bottom: 1rem;
           font-weight: bold;
@@ -353,22 +358,23 @@ const CampusesPage = () => {
         .section-subtitle {
           text-align: center;
           color: #666;
-          margin-bottom: 3rem;
+          margin-bottom: 2.5rem;
           max-width: 700px;
           margin-left: auto;
           margin-right: auto;
+          font-size: 0.9rem;
         }
 
         /* Campuses Grid - 4 columns */
         .campuses-grid-section {
-          padding: 60px 20px;
+          padding: 50px 20px;
           background-color: #f8f9fa;
         }
 
         .campuses-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 1.8rem;
+          gap: 1.5rem;
         }
 
         .campus-card {
@@ -376,7 +382,7 @@ const CampusesPage = () => {
           border-radius: 12px;
           overflow: hidden;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-          transition: transform 0.3s, box-shadow 0.3s;
+          transition: all 0.3s;
           cursor: pointer;
           height: 100%;
           display: flex;
@@ -386,6 +392,7 @@ const CampusesPage = () => {
         .campus-card:hover {
           transform: translateY(-5px);
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          border-bottom: 2px solid var(--gold);
         }
 
         .campus-image {
@@ -415,14 +422,14 @@ const CampusesPage = () => {
         }
 
         .campus-info {
-          padding: 1.2rem;
+          padding: 1rem;
           flex: 1;
           display: flex;
           flex-direction: column;
         }
 
         .campus-name {
-          font-size: 1.1rem;
+          font-size: 1rem;
           font-weight: bold;
           color: #141632;
           margin-bottom: 0.5rem;
@@ -433,7 +440,7 @@ const CampusesPage = () => {
           display: flex;
           align-items: center;
           gap: 0.4rem;
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           color: #666;
           margin-bottom: 0.4rem;
         }
@@ -443,31 +450,31 @@ const CampusesPage = () => {
           border: none;
           color: #141632;
           font-weight: 600;
-          font-size: 0.8rem;
+          font-size: 0.75rem;
           cursor: pointer;
           display: flex;
           align-items: center;
           gap: 0.25rem;
           padding: 0;
           margin-top: 0.75rem;
-          transition: color 0.3s, gap 0.3s;
+          transition: all 0.3s;
         }
 
         .view-details-btn:hover {
-          color: #C2B9F5;
+          color: var(--gold);
           gap: 0.5rem;
         }
 
         /* Featured Programmes */
         .featured-programmes {
-          padding: 60px 20px;
+          padding: 50px 20px;
           background: white;
         }
 
         .programmes-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 1.8rem;
+          gap: 1.5rem;
           max-width: 1200px;
           margin: 0 auto;
         }
@@ -476,13 +483,14 @@ const CampusesPage = () => {
           background: #f8f9fa;
           border-radius: 12px;
           overflow: hidden;
-          transition: transform 0.3s;
+          transition: all 0.3s;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         .programme-card:hover {
-          transform: translateY(-3px);
+          transform: translateY(-5px);
           box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+          border-bottom: 2px solid var(--gold);
         }
 
         .programme-image {
@@ -494,6 +502,11 @@ const CampusesPage = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 0.3s;
+        }
+
+        .programme-card:hover .programme-image img {
+          transform: scale(1.05);
         }
 
         .programme-info {
@@ -505,10 +518,15 @@ const CampusesPage = () => {
           color: #141632;
           margin-bottom: 0.5rem;
           display: inline-block;
+          transition: color 0.3s;
+        }
+
+        .programme-card:hover .programme-icon {
+          color: var(--gold);
         }
 
         .programme-info h3 {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           font-weight: bold;
           color: #141632;
           margin-bottom: 0.25rem;
@@ -516,7 +534,7 @@ const CampusesPage = () => {
         }
 
         .programme-info p {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           color: #666;
         }
 
@@ -563,7 +581,7 @@ const CampusesPage = () => {
           right: 15px;
           background: rgba(0,0,0,0.5);
           border: none;
-          font-size: 1.8rem;
+          font-size: 1.5rem;
           cursor: pointer;
           color: white;
           width: 35px;
@@ -596,7 +614,7 @@ const CampusesPage = () => {
         }
 
         .modal-header h2 {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
           color: #141632;
           margin-bottom: 0.3rem;
         }
@@ -616,7 +634,7 @@ const CampusesPage = () => {
         .modal-description p {
           color: #444;
           line-height: 1.5;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           margin-bottom: 1rem;
         }
 
@@ -631,7 +649,7 @@ const CampusesPage = () => {
           display: flex;
           align-items: center;
           gap: 0.6rem;
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           color: #666;
           margin-bottom: 0.4rem;
         }
@@ -648,8 +666,14 @@ const CampusesPage = () => {
           background: #f0f0f0;
           padding: 0.2rem 0.7rem;
           border-radius: 20px;
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           color: #141632;
+          transition: all 0.3s;
+        }
+
+        .modal-programmes li:hover {
+          background: var(--gold);
+          color: white;
         }
 
         .modal-footer {
@@ -676,7 +700,8 @@ const CampusesPage = () => {
         }
 
         .apply-btn:hover {
-          background-color: #2a2e5a;
+          background-color: var(--gold);
+          color: #141632;
         }
 
         .direction-btn {
@@ -686,7 +711,9 @@ const CampusesPage = () => {
         }
 
         .direction-btn:hover {
-          background-color: #f0f0f0;
+          background-color: var(--gold);
+          border-color: var(--gold);
+          color: #141632;
         }
 
         /* Responsive */
@@ -703,16 +730,25 @@ const CampusesPage = () => {
 
         @media (max-width: 768px) {
           .hero-content h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
+          }
+          .hero-content p {
+            font-size: 0.9rem;
           }
           .hero-stats {
             gap: 1.5rem;
           }
           .section-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
           }
           .campus-name {
-            font-size: 1rem;
+            font-size: 0.9rem;
+          }
+          .hero-stats {
+            gap: 1rem;
+          }
+          .stat-number {
+            font-size: 1.2rem;
           }
         }
 
@@ -724,7 +760,7 @@ const CampusesPage = () => {
             grid-template-columns: 1fr;
           }
           .campuses-hero {
-            padding: 40px 20px;
+            padding: 30px 20px;
           }
           .hero-content h1 {
             font-size: 1.5rem;

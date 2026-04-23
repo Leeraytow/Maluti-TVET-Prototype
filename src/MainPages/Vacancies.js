@@ -4,7 +4,7 @@ import {
   Briefcase, MapPin, Clock, DollarSign, GraduationCap, 
   Users, CheckCircle, ChevronRight, Calendar, Send, 
   Search, Filter, BookOpen, Heart, Award, TrendingUp,
-  Phone, Mail, ExternalLink, FileText, UserPlus
+  Phone, Mail, ExternalLink, FileText, UserPlus, Star
 } from 'lucide-react';
 
 const VacanciesPage = () => {
@@ -67,7 +67,7 @@ const VacanciesPage = () => {
         "Training opportunities",
         "Friendly work environment"
       ],
-      image: "https://images.unsplash.com/photo-1581092335871-4b4a9b9f3e6d?w=400&h=250&fit=crop",
+      image: "https://cdn.prod.website-files.com/5b6df8bb681f89c158b48f6b/5d5e6bc509303c33bb2aa089_it-support-technician.jpg",
       urgent: false
     },
     {
@@ -192,7 +192,7 @@ const VacanciesPage = () => {
         "Networking opportunities",
         "Flexible hours"
       ],
-      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=400&h=250&fit=crop",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREbeCMXNB54Ypi85PhYQ_50yabj3-Q1J38jg&s",
       urgent: false
     },
     {
@@ -267,12 +267,12 @@ const VacanciesPage = () => {
 
   return (
     <main className="vacancies-page">
-      {/* Hero Section - Clean without double blue */}
+      {/* Hero Section - Same height as Courses page */}
       <section className="vacancies-hero">
         <div className="hero-background"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1>Join Our Team</h1>
+          <h1>Join <span style={{ color: '#D4AF37' }}>Our Team</span></h1>
           <p>Build your career with Maluti TVET College - where excellence meets opportunity</p>
           <div className="hero-stats">
             <div className="stat">
@@ -321,13 +321,13 @@ const VacanciesPage = () => {
         </div>
       </section>
 
-      {/* Urgent Vacancies Banner - Only show if there are urgent jobs */}
+      {/* Urgent Vacancies Banner */}
       {urgentVacancies.length > 0 && (
         <section className="urgent-section">
           <div className="container">
             <div className="urgent-header">
               <span className="urgent-badge">🔥 Urgent Hiring</span>
-              <h2>Apply Now - Limited Time Opportunities</h2>
+              <h2>Apply Now - <span style={{ color: '#D4AF37' }}>Limited Time</span> Opportunities</h2>
             </div>
             <div className="urgent-grid">
               {urgentVacancies.map(vacancy => (
@@ -348,7 +348,7 @@ const VacanciesPage = () => {
         </section>
       )}
 
-      {/* Vacancies Grid - Dynamic based on count */}
+      {/* Vacancies Grid */}
       <section className="vacancies-grid-section">
         <div className="container">
           <h2 className="section-title">
@@ -387,7 +387,7 @@ const VacanciesPage = () => {
       {/* Application Process Section */}
       <section className="process-section">
         <div className="container">
-          <h2 className="section-title">How to Apply</h2>
+          <h2 className="section-title">How to <span style={{ color: '#D4AF37' }}>Apply</span></h2>
           <div className="process-steps">
             <div className="step">
               <div className="step-number">1</div>
@@ -463,20 +463,25 @@ const VacanciesPage = () => {
       )}
 
       <style>{`
+        :root {
+          --gold: #D4AF37;
+          --gold-dark: #B8960C;
+        }
+
         .vacancies-page {
           font-family: 'Arial', sans-serif;
         }
 
-        /* Hero Section - Clean */
+        /* Hero Section - Same height as Courses page */
         .vacancies-hero {
           position: relative;
-          min-height: 320px;
+          min-height: 280px;
           display: flex;
           align-items: center;
           justify-content: center;
           text-align: center;
           color: white;
-          padding: 60px 20px;
+          padding: 40px 20px;
           overflow: hidden;
         }
 
@@ -489,7 +494,8 @@ const VacanciesPage = () => {
           background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=400&fit=crop');
           background-size: cover;
           background-position: center;
-          filter: blur(3px);
+          filter: blur(2px);
+          transform: scale(1.02);
         }
 
         .hero-overlay {
@@ -509,33 +515,33 @@ const VacanciesPage = () => {
         }
 
         .hero-content h1 {
-          font-size: 2.8rem;
-          margin-bottom: 1rem;
+          font-size: 2.5rem;
+          margin-bottom: 0.75rem;
           font-weight: bold;
         }
 
         .hero-content p {
-          font-size: 1.1rem;
+          font-size: 1rem;
           opacity: 0.9;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
         }
 
         .hero-stats {
           display: flex;
           justify-content: center;
-          gap: 3rem;
+          gap: 2rem;
           flex-wrap: wrap;
         }
 
         .stat-number {
           display: block;
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: bold;
-          color: #C2B9F5;
+          color: var(--gold);
         }
 
         .stat-label {
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           opacity: 0.8;
         }
 
@@ -563,9 +569,15 @@ const VacanciesPage = () => {
           align-items: center;
           gap: 0.5rem;
           background: #f8f9fa;
-          border: 1px solid #ddd;
+          border: 2px solid #e0e0e0;
           border-radius: 50px;
           padding: 0.8rem 1.2rem;
+          transition: all 0.3s;
+        }
+
+        .search-box:focus-within {
+          border-color: var(--gold);
+          box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
 
         .search-box input {
@@ -596,10 +608,15 @@ const VacanciesPage = () => {
           font-size: 0.9rem;
         }
 
+        .filter-btn:hover {
+          transform: translateY(-2px);
+          border-color: var(--gold);
+        }
+
         .filter-btn.active {
           background: #141632;
           color: white;
-          border-color: #141632;
+          border-color: var(--gold);
         }
 
         .filter-btn .count {
@@ -616,7 +633,7 @@ const VacanciesPage = () => {
         /* Urgent Section */
         .urgent-section {
           padding: 40px 20px;
-          background: #fff8f5;
+          background: linear-gradient(135deg, #fff8f5 0%, #fff0ea 100%);
         }
 
         .urgent-header {
@@ -651,12 +668,14 @@ const VacanciesPage = () => {
           border-radius: 12px;
           overflow: hidden;
           cursor: pointer;
-          transition: transform 0.3s;
+          transition: all 0.3s;
           box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .urgent-card:hover {
           transform: translateY(-5px);
+          box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+          border-bottom: 2px solid var(--gold);
         }
 
         .urgent-image {
@@ -700,7 +719,7 @@ const VacanciesPage = () => {
           margin-bottom: 0.3rem;
         }
 
-        /* Vacancies Grid - Dynamic Layout */
+        /* Vacancies Grid */
         .vacancies-grid-section {
           padding: 50px 20px;
           background: #f8f9fa;
@@ -708,7 +727,7 @@ const VacanciesPage = () => {
 
         .section-title {
           text-align: center;
-          font-size: 2rem;
+          font-size: 1.8rem;
           color: #141632;
           margin-bottom: 0.5rem;
           font-weight: bold;
@@ -718,6 +737,7 @@ const VacanciesPage = () => {
           text-align: center;
           color: #666;
           margin-bottom: 2.5rem;
+          font-size: 0.9rem;
         }
 
         .vacancies-grid {
@@ -726,7 +746,6 @@ const VacanciesPage = () => {
           justify-content: center;
         }
 
-        /* Dynamic grid classes */
         .vacancies-grid.grid-2cols {
           grid-template-columns: repeat(2, 1fr);
           max-width: 800px;
@@ -742,13 +761,14 @@ const VacanciesPage = () => {
           border-radius: 16px;
           overflow: hidden;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-          transition: transform 0.3s, box-shadow 0.3s;
+          transition: all 0.3s;
           cursor: pointer;
         }
 
         .vacancy-card:hover {
           transform: translateY(-5px);
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+          border-bottom: 2px solid var(--gold);
         }
 
         .vacancy-image {
@@ -789,6 +809,7 @@ const VacanciesPage = () => {
           display: flex;
           gap: 1rem;
           margin-bottom: 0.5rem;
+          flex-wrap: wrap;
         }
 
         .meta-item {
@@ -816,13 +837,13 @@ const VacanciesPage = () => {
           display: flex;
           align-items: center;
           gap: 0.25rem;
-          transition: gap 0.3s;
+          transition: all 0.3s;
           margin-top: 0.5rem;
         }
 
         .view-btn:hover {
           gap: 0.5rem;
-          color: #C2B9F5;
+          color: var(--gold);
         }
 
         /* Process Section */
@@ -841,6 +862,11 @@ const VacanciesPage = () => {
         .step {
           text-align: center;
           position: relative;
+          transition: all 0.3s;
+        }
+
+        .step:hover {
+          transform: translateY(-5px);
         }
 
         .step-number {
@@ -854,11 +880,22 @@ const VacanciesPage = () => {
           justify-content: center;
           font-weight: bold;
           margin: 0 auto 1rem;
+          transition: all 0.3s;
+        }
+
+        .step:hover .step-number {
+          background: var(--gold);
+          color: #141632;
         }
 
         .step-icon {
           color: #141632;
           margin-bottom: 0.5rem;
+          transition: color 0.3s;
+        }
+
+        .step:hover .step-icon {
+          color: var(--gold);
         }
 
         .step h3 {
@@ -1012,6 +1049,7 @@ const VacanciesPage = () => {
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
+          transition: all 0.3s;
         }
 
         .apply-now-btn {
@@ -1019,10 +1057,20 @@ const VacanciesPage = () => {
           color: white;
         }
 
+        .apply-now-btn:hover {
+          background: var(--gold);
+          color: #141632;
+        }
+
         .save-btn {
           background: transparent;
           border: 1px solid #141632;
           color: #141632;
+        }
+
+        .save-btn:hover {
+          border-color: var(--gold);
+          color: var(--gold);
         }
 
         /* Responsive */
@@ -1040,7 +1088,10 @@ const VacanciesPage = () => {
 
         @media (max-width: 768px) {
           .hero-content h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
+          }
+          .hero-content p {
+            font-size: 0.9rem;
           }
           .vacancies-grid.grid-2cols,
           .vacancies-grid.grid-3cols {
@@ -1058,6 +1109,12 @@ const VacanciesPage = () => {
           .filter-btn {
             padding: 0.4rem 0.8rem;
             font-size: 0.75rem;
+          }
+          .hero-stats {
+            gap: 1rem;
+          }
+          .stat-number {
+            font-size: 1.2rem;
           }
         }
       `}</style>

@@ -1,6 +1,6 @@
 // MainPages/Contact.js
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, Building, User } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Building, User, Star } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -53,57 +53,6 @@ const ContactPage = () => {
     }
   ];
 
-  const campuses = [
-    {
-      name: "Main Campus (Tshiya)",
-      location: "Mampoi Road, Phuthaditjhaba, 9866",
-      phone: "058 713 0612",
-      email: "info@malutitvet.co.za"
-    },
-    {
-      name: "Bethlehem Campus",
-      location: "Corner of High and Wessels Streets, Bethlehem, 9700",
-      phone: "087 941 6839",
-      email: "bethlehem@malutitvet.co.za"
-    },
-    {
-      name: "Harrismith Campus",
-      location: "Extension 4751, Intabazwe Corridor, Harrismith, 9880",
-      phone: "058 622 2785",
-      email: "harrismith@malutitvet.co.za"
-    },
-    {
-      name: "Bonamelo Campus",
-      location: "Stadium Road, Phuthaditjhaba, 9866",
-      phone: "058 713 1391",
-      email: "bonamelo@malutitvet.co.za"
-    },
-    {
-      name: "Itemoheleng Campus",
-      location: "Mampoi Road, Phuthaditjhaba, 9866",
-      phone: "058 713 0296",
-      email: "itemoheleng@malutitvet.co.za"
-    },
-    {
-      name: "Kwetlisong Campus",
-      location: "Cnr. Mampoi & Bolata Road, Riverside, Phuthaditjhaba, 9870",
-      phone: "058 713 6655",
-      email: "kwetlisong@malutitvet.co.za"
-    },
-    {
-      name: "Lere la Tshepe Campus",
-      location: "Tseki Village, Poelong, 9874",
-      phone: "058 713 6611",
-      email: "lerelatshepe@malutitvet.co.za"
-    },
-    {
-      name: "Sefikeng Campus",
-      location: "107 Rosedale, Harrismith, 9870",
-      phone: "058 713 6064",
-      email: "sefikeng@malutitvet.co.za"
-    }
-  ];
-
   const departments = [
     { name: "Admissions Office", email: "admissions@maluti.edu.za", phone: "051 507 3010" },
     { name: "Student Support", email: "studentsupport@maluti.edu.za", phone: "051 507 3020" },
@@ -115,12 +64,12 @@ const ContactPage = () => {
 
   return (
     <main className="contact-page">
-      {/* Hero Section with Background Image */}
+      {/* Hero Section */}
       <section className="contact-hero">
         <div className="hero-background"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1>Contact Us</h1>
+          <h1>Contact <span style={{ color: '#D4AF37' }}>Us</span></h1>
           <p>We're here to help! Reach out to us for any inquiries, support, or feedback.</p>
         </div>
       </section>
@@ -150,11 +99,12 @@ const ContactPage = () => {
           <div className="form-map-wrapper">
             {/* Contact Form */}
             <div className="contact-form-container">
-              <h2>Send Us a Message</h2>
+              <h2>Send Us a <span style={{ color: '#D4AF37' }}>Message</span></h2>
               <p>Have a question? Fill out the form below and we'll get back to you as soon as possible.</p>
               
               {isSubmitted && (
                 <div className="success-message">
+                  <Star size={16} style={{ marginRight: '8px' }} />
                   Thank you for your message! We'll get back to you shortly.
                 </div>
               )}
@@ -208,7 +158,7 @@ const ContactPage = () => {
 
             {/* Map */}
             <div className="map-container">
-              <h2>Find Us</h2>
+              <h2>Find <span style={{ color: '#D4AF37' }}>Us</span></h2>
               <div className="map-wrapper">
                 <iframe
                   title="Maluti TVET College Location"
@@ -222,7 +172,7 @@ const ContactPage = () => {
                 ></iframe>
               </div>
               <div className="address-details">
-                <MapPin size={18} />
+                <MapPin size={18} color="#D4AF37" />
                 <span>1 Moshoeshoe Road, Old Europa, Bloemfontein, 9301</span>
               </div>
             </div>
@@ -230,37 +180,10 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* All 8 Campus Locations */}
-      <section className="campuses-contact">
-        <div className="container">
-          <h2 className="section-title">Our 8 Campuses</h2>
-          <p className="section-subtitle">Visit any of our 8 campuses across the Free State region</p>
-          <div className="campuses-contact-grid">
-            {campuses.map((campus, index) => (
-              <div key={index} className="campus-contact-card">
-                <div className="campus-icon">
-                  <Building size={24} />
-                </div>
-                <h3>{campus.name}</h3>
-                <p className="campus-location-text">
-                  <MapPin size={14} /> {campus.location}
-                </p>
-                <p className="campus-phone-text">
-                  <Phone size={14} /> {campus.phone}
-                </p>
-                <p className="campus-email-text">
-                  <Mail size={14} /> {campus.email}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Departments Section */}
       <section className="departments-section">
         <div className="container">
-          <h2 className="section-title">Contact Departments Directly</h2>
+          <h2 className="section-title">Contact <span style={{ color: '#D4AF37' }}>Departments</span> Directly</h2>
           <p className="section-subtitle">Get in touch with specific departments for faster assistance</p>
           <div className="departments-grid">
             {departments.map((dept, index) => (
@@ -280,20 +203,26 @@ const ContactPage = () => {
       </section>
 
       <style>{`
+        :root {
+          --gold: #D4AF37;
+          --gold-dark: #B8960C;
+          --gold-light: #F3E5AB;
+        }
+
         .contact-page {
           font-family: 'Arial', sans-serif;
         }
 
-        /* Hero Section with Background Image */
+        /* Hero Section */
         .contact-hero {
           position: relative;
-          min-height: 320px;
+          min-height: 260px;
           display: flex;
           align-items: center;
           justify-content: center;
           text-align: center;
           color: white;
-          padding: 60px 20px;
+          padding: 50px 20px;
           overflow: hidden;
         }
 
@@ -303,11 +232,11 @@ const ContactPage = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background-image: url('/contactUs.jpg');
+          background-image: url('https://cdn.briefly.co.za/images/1200x675/b4aa8bcc6dc0f701.jpeg?v=1');
           background-size: cover;
           background-position: center;
-          filter: blur(1px);
-          transform: scale(1.05);
+          filter: blur(2px);
+          transform: scale(1.02);
         }
 
         .hero-overlay {
@@ -316,7 +245,7 @@ const ContactPage = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(20, 22, 50, 0.85);
+          background: rgba(20, 22, 50, 0.88);
         }
 
         .hero-content {
@@ -327,13 +256,13 @@ const ContactPage = () => {
         }
 
         .hero-content h1 {
-          font-size: 2.8rem;
-          margin-bottom: 1rem;
+          font-size: 2.5rem;
+          margin-bottom: 0.75rem;
           font-weight: bold;
         }
 
         .hero-content p {
-          font-size: 1.1rem;
+          font-size: 1rem;
           opacity: 0.9;
         }
 
@@ -353,46 +282,55 @@ const ContactPage = () => {
         .info-cards {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
+          gap: 1.8rem;
         }
 
         .info-card {
           background: white;
-          padding: 1.5rem;
-          border-radius: 16px;
+          padding: 1.8rem;
+          border-radius: 20px;
           text-align: center;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-          transition: transform 0.3s;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s;
+          border-bottom: 3px solid transparent;
         }
 
         .info-card:hover {
-          transform: translateY(-5px);
+          transform: translateY(-8px);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+          border-bottom-color: var(--gold);
         }
 
         .info-icon {
-          width: 60px;
-          height: 60px;
+          width: 70px;
+          height: 70px;
           background-color: #141632;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 1rem;
+          margin: 0 auto 1.2rem;
           color: white;
+          transition: all 0.3s;
+        }
+
+        .info-card:hover .info-icon {
+          background-color: var(--gold);
+          transform: scale(1.05);
         }
 
         .info-card h3 {
           font-size: 1.2rem;
           font-weight: bold;
           color: #141632;
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.8rem;
         }
 
         .info-card p {
           font-size: 0.85rem;
           color: #666;
           line-height: 1.5;
-          margin-bottom: 0.25rem;
+          margin-bottom: 0.3rem;
         }
 
         /* Contact Form Section */
@@ -411,62 +349,72 @@ const ContactPage = () => {
           font-size: 1.8rem;
           color: #141632;
           margin-bottom: 0.5rem;
+          font-weight: bold;
         }
 
         .contact-form-container p {
           color: #666;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.8rem;
+          font-size: 0.9rem;
         }
 
         .success-message {
-          background: #d4edda;
+          background: linear-gradient(135deg, #d4edda, #c3e6cb);
           color: #155724;
           padding: 1rem;
-          border-radius: 8px;
+          border-radius: 10px;
           margin-bottom: 1.5rem;
-          border-left: 4px solid #28a745;
+          border-left: 4px solid var(--gold);
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
         }
 
         .contact-form {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.2rem;
         }
 
         .form-group input,
         .form-group textarea {
           width: 100%;
-          padding: 0.9rem;
-          border: 1px solid #ddd;
-          border-radius: 8px;
+          padding: 1rem;
+          border: 2px solid #eee;
+          border-radius: 12px;
           font-size: 0.9rem;
-          transition: border-color 0.3s;
+          transition: all 0.3s;
+          font-family: inherit;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
           outline: none;
-          border-color: #141632;
+          border-color: var(--gold);
+          box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
 
         .submit-btn {
           background-color: #141632;
           color: white;
-          padding: 0.9rem;
+          padding: 1rem;
           border: none;
-          border-radius: 8px;
+          border-radius: 12px;
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.5rem;
-          transition: background-color 0.3s;
+          gap: 0.6rem;
+          transition: all 0.3s;
         }
 
         .submit-btn:hover {
-          background-color: #2a2e5a;
+          background-color: var(--gold);
+          color: #141632;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
         .map-container {
@@ -476,87 +424,49 @@ const ContactPage = () => {
         }
 
         .map-wrapper {
-          height: 300px;
-          border-radius: 12px;
+          height: 320px;
+          border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+          border: 2px solid var(--gold);
         }
 
         .address-details {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.6rem;
           padding: 1rem;
           background: #f8f9fa;
-          border-radius: 8px;
+          border-radius: 12px;
           color: #666;
           font-size: 0.9rem;
+          transition: all 0.3s;
         }
 
-        /* Campus Locations - All 8 Campuses */
-        .campuses-contact {
+        .address-details:hover {
+          background: var(--gold-light);
+          transform: translateX(5px);
+        }
+
+        /* Departments Section */
+        .departments-section {
           padding: 60px 20px;
-          background: #f8f9fa;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .section-title {
           text-align: center;
           font-size: 2rem;
           color: #141632;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
           font-weight: bold;
         }
 
         .section-subtitle {
           text-align: center;
           color: #666;
-          margin-bottom: 3rem;
-        }
-
-        .campuses-contact-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-        }
-
-        .campus-contact-card {
-          background: white;
-          padding: 1.5rem;
-          border-radius: 12px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-          transition: transform 0.3s;
-        }
-
-        .campus-contact-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .campus-icon {
-          color: #141632;
-          margin-bottom: 1rem;
-        }
-
-        .campus-contact-card h3 {
-          font-size: 1rem;
-          font-weight: bold;
-          color: #141632;
-          margin-bottom: 0.75rem;
-        }
-
-        .campus-contact-card p {
-          font-size: 0.8rem;
-          color: #666;
-          margin-bottom: 0.4rem;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-        }
-
-        /* Departments Section */
-        .departments-section {
-          padding: 60px 20px;
-          background: white;
+          margin-bottom: 2.5rem;
+          font-size: 0.95rem;
         }
 
         .departments-grid {
@@ -570,18 +480,28 @@ const ContactPage = () => {
           align-items: flex-start;
           gap: 1rem;
           padding: 1.2rem;
-          background: #f8f9fa;
-          border-radius: 12px;
-          transition: transform 0.3s;
+          background: white;
+          border-radius: 16px;
+          transition: all 0.3s;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+          border-left: 3px solid transparent;
         }
 
         .department-card:hover {
-          transform: translateX(5px);
+          transform: translateX(8px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+          border-left-color: var(--gold);
         }
 
         .dept-icon {
           color: #141632;
           flex-shrink: 0;
+          transition: all 0.3s;
+        }
+
+        .department-card:hover .dept-icon {
+          color: var(--gold);
+          transform: scale(1.1);
         }
 
         .dept-info h3 {
@@ -594,19 +514,23 @@ const ContactPage = () => {
         .dept-info p {
           font-size: 0.8rem;
           color: #666;
-          margin-bottom: 0.25rem;
+          margin-bottom: 0.3rem;
           display: flex;
           align-items: center;
           gap: 0.4rem;
+          word-break: break-all;
+          transition: color 0.3s;
+        }
+
+        .department-card:hover .dept-info p {
+          color: #141632;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
           .info-cards {
             grid-template-columns: repeat(2, 1fr);
-          }
-          .campuses-contact-grid {
-            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
           }
           .departments-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -616,9 +540,13 @@ const ContactPage = () => {
         @media (max-width: 768px) {
           .form-map-wrapper {
             grid-template-columns: 1fr;
+            gap: 2rem;
           }
           .hero-content h1 {
             font-size: 2rem;
+          }
+          .hero-content p {
+            font-size: 0.9rem;
           }
           .section-title {
             font-size: 1.6rem;
@@ -626,11 +554,35 @@ const ContactPage = () => {
           .info-cards {
             grid-template-columns: 1fr;
           }
-          .campuses-contact-grid {
-            grid-template-columns: 1fr;
-          }
           .departments-grid {
             grid-template-columns: 1fr;
+          }
+          .contact-hero {
+            min-height: 200px;
+            padding: 40px 20px;
+          }
+          .contact-info-section,
+          .contact-form-section,
+          .departments-section {
+            padding: 40px 20px;
+          }
+          .map-wrapper {
+            height: 250px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-content h1 {
+            font-size: 1.6rem;
+          }
+          .section-title {
+            font-size: 1.3rem;
+          }
+          .info-card {
+            padding: 1.2rem;
+          }
+          .department-card {
+            padding: 1rem;
           }
         }
       `}</style>
