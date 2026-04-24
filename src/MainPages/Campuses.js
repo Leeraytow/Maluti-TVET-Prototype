@@ -1,6 +1,6 @@
 // MainPages/Campuses.js
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, BookOpen, GraduationCap, Briefcase, ChevronRight, ExternalLink, Globe, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, BookOpen, Briefcase, ChevronRight } from 'lucide-react';
 
 const CampusesPage = () => {
   const [selectedCampus, setSelectedCampus] = useState(null);

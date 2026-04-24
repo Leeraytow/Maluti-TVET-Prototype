@@ -5,8 +5,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Sample routes (API skeleton)
-
 // Get all campuses
 app.get('/api/campuses', (req, res) => {
   res.json({ message: "List of campuses" });

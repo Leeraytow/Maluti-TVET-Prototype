@@ -1,7 +1,7 @@
 // pages/HomePage.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GraduationCap, BookOpen, Users, Award, FileText, Handshake, Briefcase, Shield, Download, Heart, AlertTriangle, Phone, Building, Calendar, UserCheck, TrendingUp, Mail, MessageCircle, Star } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, Award, FileText, Handshake, Briefcase, Download, Building, Calendar, Star } from 'lucide-react';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ const HomePage = () => {
       isExternalPrimary: true
     },
     {
-      title: 'Report Fraud ',
+      title: 'Report Fraud Anonymously',
       subtitle: 'Help us maintain integrity. Report any fraudulent activities through our hotline.',
       button1: 'Report Now',
       button1Link: '/report-fraud',
@@ -257,7 +257,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Why Choose Maluti Section - DHET section removed */}
+      {/* Why Choose Maluti Section */}
       <section className="why-choose">
         <div className="container">
           <h2 className="section-title">Why Choose <span style={{ color: '#D4AF37' }}>Maluti TVET</span> College?</h2>

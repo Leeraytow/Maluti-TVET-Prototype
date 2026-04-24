@@ -1,6 +1,6 @@
 // components/Footer.js
 import React from 'react';
-import { Mail, Phone, MapPin, ExternalLink, ChevronRight } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -21,11 +21,11 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="#">Vacancies</a></li>
-              <li><a href="#">Tenders</a></li>
-              <li><a href="#">Our Campuses</a></li>
-              <li><a href="#">Student Support</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="/vacancies">Vacancies</a></li>
+              <li><a href="/tenders">Tenders</a></li>
+              <li><a href="/campuses">Our Campuses</a></li>
+              <li><a href="/student-support">Student Support</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
 
@@ -95,7 +95,6 @@ const Footer = () => {
           flex-direction: column;
         }
 
-        /* PUSH MALUTI FULLY LEFT */
         .first-section {
           margin-left: -20px;
         }
@@ -148,7 +147,6 @@ const Footer = () => {
           margin-bottom: 0.8rem;
         }
 
-        /* ICON STYLE LIKE YOUR DESIGN */
         .icon-circle {
           width: 36px;
           height: 36px;
@@ -169,33 +167,27 @@ const Footer = () => {
           opacity: 0.6;
         }
 
-        /* Tablet */
         @media (max-width: 1024px) {
           .footer-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-
           .first-section {
             margin-left: 0;
           }
         }
 
-        /* Mobile */
         @media (max-width: 640px) {
           .footer-grid {
             grid-template-columns: 1fr;
             text-align: center;
           }
-
           .footer-section {
             align-items: center;
           }
-
           .contact-item, .address-item {
             justify-content: center;
             text-align: center;
           }
-
           .footer-description {
             max-width: 100%;
             text-align: center;

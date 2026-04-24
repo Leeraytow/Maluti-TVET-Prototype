@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { 
   Briefcase, MapPin, Clock, DollarSign, GraduationCap, 
-  Users, CheckCircle, ChevronRight, Calendar, Send, 
-  Search, Filter, BookOpen, Heart, Award, TrendingUp,
-  Phone, Mail, ExternalLink, FileText, UserPlus, Star
+  Users, CheckCircle, ChevronRight, Send, 
+  Search, Heart, Award, TrendingUp,
+  Mail, FileText
 } from 'lucide-react';
 
 const VacanciesPage = () => {

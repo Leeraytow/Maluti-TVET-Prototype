@@ -1,10 +1,10 @@
 // MainPages/Courses.js
 import React, { useState } from 'react';
 import { 
-  GraduationCap, BookOpen, Users, Award, Briefcase, 
-  Clock, CheckCircle, ChevronRight, Calendar, 
-  TrendingUp, Wrench, Laptop, Heart, Building,
-  Coffee, Zap, Globe, Shield, Download, Eye
+  GraduationCap, Users, Briefcase, 
+  Clock, ChevronRight, 
+  TrendingUp, Wrench, Laptop, Heart,
+  Coffee, Globe, Download
 } from 'lucide-react';
 
 const CoursesPage = () => {

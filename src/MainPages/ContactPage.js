@@ -1,6 +1,6 @@
 // MainPages/Contact.js
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, Building, User, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, User, Star } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({

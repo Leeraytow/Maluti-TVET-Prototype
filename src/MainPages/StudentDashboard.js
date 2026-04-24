@@ -2,11 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Home, User, BookOpen, Calendar, Clock, Award, 
-  FileText, Mail, Bell, Settings, LogOut, ChevronRight,
-  GraduationCap, Users, DollarSign, CheckCircle, AlertCircle,
-  Download, Eye, MessageCircle, CreditCard, PieChart,
-  TrendingUp, Target, Star, MapPin, Phone, Mail as MailIcon,
-  Upload, FileCheck, Calendar as CalendarIcon, Search,
+  FileText, Bell, LogOut,
+  GraduationCap, Users, DollarSign, CheckCircle, Star, AlertCircle,
   Menu, X
 } from 'lucide-react';
 
