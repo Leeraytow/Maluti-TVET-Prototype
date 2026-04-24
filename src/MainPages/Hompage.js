@@ -59,7 +59,7 @@ const HomePage = () => {
       isExternalPrimary: true
     },
     {
-      title: 'Report Fraud Anonymously',
+      title: 'Report Fraud ',
       subtitle: 'Help us maintain integrity. Report any fraudulent activities through our hotline.',
       button1: 'Report Now',
       button1Link: '/report-fraud',

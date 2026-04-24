@@ -157,7 +157,6 @@ const CampusesPage = () => {
         </div>
       </section>
 
-      {/* Campuses Grid - 4 over 4 */}
       <section className="campuses-grid-section">
         <div className="container">
           <h2 className="section-title">Explore <span style={{ color: '#D4AF37' }}>Our Campuses</span></h2>
@@ -188,7 +187,6 @@ const CampusesPage = () => {
         </div>
       </section>
 
-      {/* Featured Occupational Programmes with Images */}
       <section className="featured-programmes">
         <div className="container">
           <h2 className="section-title">Featured <span style={{ color: '#D4AF37' }}>Occupational</span> Programmes</h2>
