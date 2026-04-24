@@ -3,6 +3,10 @@ import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  const handleNavigation = (path) => {
+    window.location.href = path;
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -21,11 +25,11 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="/vacancies">Vacancies</a></li>
-              <li><a href="/tenders">Tenders</a></li>
-              <li><a href="/campuses">Our Campuses</a></li>
-              <li><a href="/student-support">Student Support</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><button className="footer-link" onClick={() => handleNavigation('/vacancies')}>Vacancies</button></li>
+              <li><button className="footer-link" onClick={() => handleNavigation('/tenders')}>Tenders</button></li>
+              <li><button className="footer-link" onClick={() => handleNavigation('/campuses')}>Our Campuses</button></li>
+              <li><button className="footer-link" onClick={() => handleNavigation('/student-support')}>Student Support</button></li>
+              <li><button className="footer-link" onClick={() => handleNavigation('/contact')}>Contact</button></li>
             </ul>
           </div>
 
@@ -122,18 +126,23 @@ const Footer = () => {
           gap: 0.7rem;
         }
 
-        .footer-links a {
+        .footer-link {
+          background: none;
+          border: none;
           color: white;
           opacity: 0.8;
           text-decoration: none;
           font-size: 0.9rem;
+          cursor: pointer;
+          text-align: left;
+          padding: 0;
           transition: all 0.3s;
           display: inline-flex;
           align-items: center;
           gap: 5px;
         }
 
-        .footer-links a:hover {
+        .footer-link:hover {
           color: #C2B9F5;
           transform: translateX(3px);
         }
@@ -190,6 +199,9 @@ const Footer = () => {
           }
           .footer-description {
             max-width: 100%;
+            text-align: center;
+          }
+          .footer-link {
             text-align: center;
           }
         }

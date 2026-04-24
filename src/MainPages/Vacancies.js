@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { 
   Briefcase, MapPin, Clock, DollarSign, GraduationCap, 
   Users, CheckCircle, ChevronRight, Send, 
-  Search, Heart, Award, TrendingUp,
+  Search, Heart, Award,
   Mail, FileText
 } from 'lucide-react';
 
